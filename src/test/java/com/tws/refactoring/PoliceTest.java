@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 class PoliceTest {
 
     @Test
-    void should_return_true_when_check_age_given_age_20(){
+    void should_return_true_when_check_age_given_age_over_18(){
         //given
         Police police = new Police();
         Driver driver = new Driver(20);
@@ -19,7 +19,7 @@ class PoliceTest {
     }
 
     @Test
-    void should_return_false_when_check_age_given_age_16(){
+    void should_return_false_when_check_age_given_less_than_18(){
         //given
         Police police = new Police();
         Driver driver = new Driver(16);
@@ -29,6 +29,19 @@ class PoliceTest {
 
         //then
         Assertions.assertFalse(result);
+    }
+
+    @Test
+    void should_return_true_when_check_age_given_age_18(){
+        //given
+        Police police = new Police();
+        Driver driver = new Driver(18);
+
+        // when
+        boolean result = police.checkDriverAge(driver);
+
+        //then
+        Assertions.assertTrue(result);
     }
 
 }
